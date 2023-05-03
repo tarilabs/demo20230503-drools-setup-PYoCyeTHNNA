@@ -1,0 +1,11 @@
+package org.drools.demo;
+
+global java.util.List alerts
+
+rule "File name"
+when
+  $file : FileEntry(nameFile not matches "^NA.*" && nameFile not matches "^NC.*" )
+then
+  System.out.println("ERROR"+$file.getNameFile());
+   alerts.add(new Alert($file.getNameFile(), "ERROR NAME"));
+end
